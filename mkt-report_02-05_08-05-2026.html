@@ -584,34 +584,32 @@
                             ]
                         },
                     bookTargets: [
-                    { name: "Phá bỏ", actual: 82, target: 90 },
-                    { name: "Phi thường", actual: 65, target: 300 },
-                    { name: "PTA", actual: 60, target: 110 },
-                    { name: "Giả dược", actual: 49, target: 100 },
+                    { name: "Phi thường", actual: 65, target: 160 },
+                    { name: "Bộ Joe - 4c", actual: 8, target: 36 },
+                    { name: "Giả dược", actual: 49, target: 142 },
+                    { name: "Phá bỏ", actual: 82, target: 200 },
                     { name: "Từ Tâm trí", actual: 31, target: 90 },
-                    { name: "6×66 Ngày", actual: 12, target: 1 },
                     { name: "Vòng xoáy", actual: 11, target: 50 },
-                    { name: "Tiny Habits", actual: 9, target: 20 },
-                    { name: "Bộ Joe - 4c", actual: 8, target: 35 },
-                    { name: "Almanack", actual: 6, target: 15 },
-                    { name: "Ý định", actual: 6, target: 15 },
                     { name: "TKCĐTV", actual: 5, target: 40 },
-                    { name: "Cảm xúc", actual: 4, target: 24 },
-                    { name: "Yêu cầu đúng", actual: 4, target: 10 },
-                    { name: "66 Ngày", actual: 3, target: 15 },
-                    { name: "Tiền", actual: 2, target: 15 },
-                    { name: "Bắt đầu", actual: 2, target: 6 },
-                    { name: "Hiện thực hóa", actual: 1, target: 10 },
+                    { name: "PTA", actual: 60, target: 110 },
                     { name: "Bộ Luật hấp dẫn - 6c", actual: 1, target: 5 },
-                    { name: "Bộ PTA + 66N - 2c", actual: 1, target: 5 },
-                    { name: "Làm Chủ", actual: 1, target: 5 },
+                    { name: "Tiny Habits", actual: 9, target: 20 },
+                    { name: "Cảm xúc", actual: 4, target: 24 },
+                    { name: "Tiền", actual: 2, target: 15 },
+                    { name: "Ý định", actual: 6, target: 15 },
+                    { name: "Yêu cầu đúng", actual: 4, target: 10 },
+                    { name: "Hiện thực hóa", actual: 1, target: 10 },
                     { name: "101 Lời khuyên", actual: 0, target: 8 },
-                    { name: "396 đầu tư", actual: 0, target: 3 },
+                    { name: "Bắt đầu", actual: 2, target: 6 },
+                    { name: "66 Ngày", actual: 3, target: 15 },
                     { name: "Bộ 396 - 3c", actual: 0, target: 3 },
-                    { name: "396 PTBT", actual: 0, target: 1 },
-                    { name: "Bộ Nâng cấp - 2c", actual: 0, target: 1 },
+                    { name: "Almanack", actual: 6, target: 15 },
+                    { name: "Làm Chủ", actual: 1, target: 5 },
+                    { name: "Bộ PTA + 66N - 2c", actual: 1, target: 5 },
                     { name: "Bộ PTA - 10c", actual: 0, target: 1 },
-                    { name: "Bộ TKCĐTV - 4c", actual: 0, target: 1 }
+                    { name: "Bộ TKCĐTV - 4c", actual: 0, target: 1 },
+                    { name: "Bộ Nâng cấp - 2c", actual: 0, target: 1 },
+                    { name: "6×66 Ngày", actual: 12, target: 1 }
                     ]
                 },
                 {
@@ -797,7 +795,7 @@
                 const dt = cat.dailyTarget;
                 rightHtml = `
         <div class="card">
-          <h3>Top 1 & 2 - Mục tiêu tháng 4</h3>
+          <h3>Top 1 & 2 - Mục tiêu tháng 5</h3>
           <div style="display:flex;gap:16px;margin-bottom:16px">
             <div style="flex:1;background:var(--surface2);padding:12px;border-radius:8px">
               <div style="font-size:.8rem;color:var(--text2)">Top 1: ${dt.top1.name}</div>
@@ -865,7 +863,7 @@
                 }).join('');
                 targetHtml = `
         <div class="card" style="grid-column: 1 / -1;">
-          <h3>Tiến độ so với mục tiêu tháng 4</h3>
+          <h3>Tiến độ so với mục tiêu tháng 5</h3>
           <table style="width:100%;border-collapse:collapse;margin-top:10px;">
             <thead><tr><th style="text-align:left;min-width:160px">Sản phẩm</th><th style="min-width:60px;text-align:center">Thực tế</th><th style="min-width:60px;text-align:center">Mục tiêu</th><th style="min-width:200px">% Hoàn thành</th></tr></thead>
             <tbody>${tRows}</tbody>
