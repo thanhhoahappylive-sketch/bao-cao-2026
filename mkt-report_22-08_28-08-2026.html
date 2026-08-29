@@ -716,6 +716,158 @@
                 font-size: 2.2rem
             }
         }
+
+        /* ============================================================
+           XEM TRÊN ĐIỆN THOẠI — thêm 29/08/2026 (cô nương báo mở trên
+           điện thoại bị vỡ nhiều chỗ).
+
+           NGUYÊN TẮC: thân trang KHÔNG BAO GIỜ được cuộn ngang. Bảng hay
+           biểu đồ nào rộng thì cuộn BÊN TRONG khung của chính nó.
+           ============================================================ */
+
+        /* ⚠️ BẪY CSS GRID — đây mới là gốc của việc vỡ trang.
+           Ô lưới mặc định là min-width:auto, nghĩa là nó KHÔNG chịu co
+           nhỏ hơn nội dung bên trong. Nên bảng 13 cột và canvas
+           min-width:1100px banh cả lưới ra, kéo theo cả trang rộng
+           1380px trên màn 390px — dù card ĐÃ có overflow-x:auto sẵn.
+           Phải đặt min-width:0 thì overflow-x đó mới thật sự có tác dụng. */
+        .grid>*,
+        .card,
+        .khungCao {
+            min-width: 0
+        }
+
+        /* Lưới 1 cột (khối từng ngành sách) mặc định để track = max-content,
+           nên nó phình theo canvas min-width:1100px bên trong. Ghim thành
+           minmax(0,1fr) để track bám bề ngang màn hình.
+           ⚠️ :not(.grid-2) là bắt buộc — khối này nằm cuối file, không loại trừ
+           thì nó đè luôn repeat(2,1fr) của .grid-2 và bẹp layout máy tính. */
+        .grid:not(.grid-2) {
+            grid-template-columns: minmax(0, 1fr)
+        }
+
+        .card {
+            overflow-x: auto
+        }
+
+        @media (max-width: 1024px) {
+            .grid-2 {
+                grid-template-columns: 1fr
+            }
+
+            /* Hero phải xuống 1 cột CÙNG LÚC với lưới, nếu không cột trái bị bóp
+               và số doanh thu gãy làm hai dòng ("125.382.000" / "đ"). Mốc 900 của
+               bản cũ là quá muộn — máy tính xách tay 1000px đã vỡ rồi. */
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 28px 22px
+            }
+
+            .hero .revenue {
+                font-size: 2.6rem
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            /* ⚠️ `table{width:100%}` ở trên làm bảng CO LẠI cho vừa màn hình,
+               các cột tuần bị bóp nát chồng lên nhau. Trên điện thoại phải cho
+               bảng giữ bề rộng tự nhiên rồi CUỘN ngang trong khung của nó. */
+            .card table {
+                width: auto;
+                min-width: 100%;
+                max-width: none
+            }
+
+            .card th,
+            .card td {
+                padding: 6px 8px;
+                white-space: nowrap
+            }
+
+            .container {
+                padding: 12px
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                letter-spacing: 0;
+                line-height: 1.25
+            }
+
+            .card {
+                padding: 14px;
+                border-radius: 12px
+            }
+
+            .card h3 {
+                font-size: 1rem
+            }
+
+            /* Hero: 1 cột, số doanh thu vừa màn hình chứ không tràn mép */
+            .hero {
+                padding: 20px 16px;
+                border-radius: 14px;
+                gap: 18px
+            }
+
+            .hero .revenue {
+                font-size: 2rem;
+                letter-spacing: -.5px;
+                margin: 8px 0 12px
+            }
+
+            .hero .growth {
+                gap: 8px
+            }
+
+            .hero .growth .badge {
+                padding: 6px 14px;
+                font-size: var(--fs-xs)
+            }
+
+            /* Chú thích màu xuống dòng thay vì kéo ngang */
+            .legend {
+                flex-wrap: wrap;
+                gap: 8px 12px
+            }
+
+            /* Ngón tay bấm mục lục cho dễ */
+            .card a[href^="#"] {
+                padding: 9px 13px !important;
+                font-size: var(--fs-xs) !important
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.28rem
+            }
+
+            .hero .revenue {
+                font-size: 1.7rem
+            }
+        }
+
+        /* Nhắc vuốt ngang — chỉ hiện trên điện thoại, và chỉ ở khung nào thật sự
+           còn nội dung khuất bên phải (do JS gắn vào, xem hàm nhacVuotNgang). */
+        .nhacVuot {
+            display: none
+        }
+
+        @media (max-width: 720px) {
+            .nhacVuot {
+                display: block;
+                position: sticky;
+                left: 0;
+                margin-top: 10px;
+                text-align: center;
+                font-size: var(--fs-xs);
+                font-weight: 700;
+                color: var(--text2);
+                opacity: .8
+            }
+        }
     </style>
 </head>
 
@@ -2599,11 +2751,38 @@
             });
         }
 
+        // Khung nào còn nội dung khuất bên phải thì gắn nhắc "vuốt ngang".
+        // Chỉ trên điện thoại — máy tính đủ rộng, không cần.
+        function nhacVuotNgang() {
+            document.querySelectorAll('.nhacVuot').forEach(n => n.remove());
+            if (window.innerWidth > 720) return;
+            document.querySelectorAll('.card').forEach(c => {
+                if (c.scrollWidth > c.clientWidth + 4) {
+                    const n = document.createElement('div');
+                    n.className = 'nhacVuot';
+                    n.textContent = '← vuốt ngang để xem tiếp →';
+                    c.appendChild(n);
+                }
+            });
+        }
+
+        function veXong() {
+            render();
+            // đợi Chart.js vẽ xong mới đo được bề rộng thật của từng khung
+            setTimeout(nhacVuotNgang, 400);
+        }
+
+        let henDo;
+        window.addEventListener('resize', () => {
+            clearTimeout(henDo);
+            henDo = setTimeout(nhacVuotNgang, 250);
+        });
+
         // Initialize — chờ font Montserrat tải xong rồi mới vẽ canvas
         if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(render);
+            document.fonts.ready.then(veXong);
         } else {
-            render();
+            veXong();
         }
     </script>
 </body>
