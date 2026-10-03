@@ -918,10 +918,10 @@
                         section: false,
                         group: "TỔNG CỘNG",
                         name: "Toàn hệ thống",
-                        values: [161432000, 128957000, 121624000, 94717000, 172276000, 121798000, 125949000, 99074000],
-                        avg: 128228375,
+                        values: [161432000, 128957000, 121624000, 94717000, 172276000, 120702000, 125949000, 99074000],
+                        avg: 128091375,
                         pct: +77.3,
-                        diff: -29154375
+                        diff: -29017375
                     },
                     {
                         section: true,
@@ -931,10 +931,10 @@
                         section: false,
                         group: "THEO NHÓM SÁCH",
                         name: "Đầu tư",
-                        values: [100277000, 68726000, 76515000, 53172000, 112699000, 74801000, 85294000, 65665000],
-                        avg: 79643625,
-                        pct: +82.4,
-                        diff: -13978625
+                        values: [100277000, 68726000, 76515000, 53172000, 112699000, 74502000, 85294000, 65665000],
+                        avg: 79606250,
+                        pct: +82.5,
+                        diff: -13941250
                     },
                     {
                         section: false,
@@ -949,19 +949,19 @@
                         section: false,
                         group: "THEO NHÓM SÁCH",
                         name: "PTBT",
-                        values: [51820000, 51461000, 35527000, 33940000, 46643000, 39269000, 32644000, 26834000],
-                        avg: 39767250,
+                        values: [51820000, 51461000, 35527000, 33940000, 46643000, 39020000, 32644000, 26834000],
+                        avg: 39736125,
                         pct: +67.5,
-                        diff: -12933250
+                        diff: -12902125
                     },
                     {
                         section: false,
                         group: "THEO NHÓM SÁCH",
                         name: "Khác",
-                        values: [0, 0, 0, 0, 0, 548000, 0, 0],
-                        avg: 68500,
-                        pct: 0,
-                        diff: -68500
+                        values: [0, 0, 0, 0, 0, 0, 0, 0],
+                        avg: 0,
+                        pct: null,
+                        diff: 0
                     },
                     {
                         section: true,
@@ -998,10 +998,10 @@
                         section: false,
                         group: "THEO SÀN",
                         name: "tiki",
-                        values: [9253000, 11431000, 6989000, 6440000, 15015000, 12511000, 18813000, 9890000],
-                        avg: 11292750,
-                        pct: +87.6,
-                        diff: -1402750
+                        values: [9253000, 11431000, 6989000, 6440000, 15015000, 11415000, 18813000, 9890000],
+                        avg: 11155750,
+                        pct: +88.7,
+                        diff: -1265750
                     },
                     {
                         section: false,
@@ -1195,7 +1195,7 @@
                         data: [
                             {
                                 name: "Learn to earn",
-                                values: ["0c-B", "0c-B", "0c-B", "0c-B", "24c-TM", "50c-TM", "42c-G", "60c-TM"]
+                                values: ["0c-B", "0c-B", "0c-B", "0c-B", "24c-TM", "49c-TM", "42c-G", "60c-TM"]
                             },
                             {
                                 name: "Đầu cơ",
@@ -1882,7 +1882,7 @@
         const rows = t.labels.map((label, i) => dong(label, t.actual[i], t.target[i], false)).join('');
         return `
         <div class="progPanel">
-          <div class="progHead">TIẾN ĐỘ DOANH THU THÁNG 10</div>
+          <div class="progHead">TIẾN ĐỘ DOANH THU THÁNG 100</div>
           ${rows}
           ${dong('TỔNG', totalActual, totalTarget, true)}
         </div>`;
@@ -2048,7 +2048,7 @@
                 const dt = cat.dailyTarget;
                 rightHtml = `
         <div class="card">
-          <h3>Top 1 & 2 - Mục tiêu tháng 10</h3>
+          <h3>Top 1 & 2 - Mục tiêu tháng 100</h3>
           <div style="display:flex;gap:16px;margin-bottom:16px">
             <div style="flex:1;background:var(--surface2);padding:12px;border-radius:8px">
               <div style="font-size:var(--fs-sm);color:var(--text2)">Top 1: ${dt.top1.name}</div>
@@ -2119,7 +2119,7 @@
                 }).join('');
                 targetHtml = `
         <div class="card" style="grid-column: 1 / -1;">
-          <h3>Tiến độ so với mục tiêu tháng 10</h3>
+          <h3>Tiến độ so với mục tiêu tháng 100</h3>
           <table style="width:100%;border-collapse:collapse;margin-top:10px;">
             <thead><tr><th style="text-align:left;min-width:160px">Sản phẩm</th><th style="min-width:60px;text-align:center">Thực tế</th><th style="min-width:60px;text-align:center">Mục tiêu</th><th style="min-width:200px">% Hoàn thành</th></tr></thead>
             <tbody>${tRows}</tbody>
