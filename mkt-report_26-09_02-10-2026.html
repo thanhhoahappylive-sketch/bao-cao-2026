@@ -1882,7 +1882,7 @@
         const rows = t.labels.map((label, i) => dong(label, t.actual[i], t.target[i], false)).join('');
         return `
         <div class="progPanel">
-          <div class="progHead">TIẾN ĐỘ DOANH THU THÁNG 100</div>
+          <div class="progHead">TIẾN ĐỘ DOANH THU THÁNG 10</div>
           ${rows}
           ${dong('TỔNG', totalActual, totalTarget, true)}
         </div>`;
@@ -2048,7 +2048,7 @@
                 const dt = cat.dailyTarget;
                 rightHtml = `
         <div class="card">
-          <h3>Top 1 & 2 - Mục tiêu tháng 100</h3>
+          <h3>Top 1 & 2 - Mục tiêu tháng 10</h3>
           <div style="display:flex;gap:16px;margin-bottom:16px">
             <div style="flex:1;background:var(--surface2);padding:12px;border-radius:8px">
               <div style="font-size:var(--fs-sm);color:var(--text2)">Top 1: ${dt.top1.name}</div>
@@ -2119,7 +2119,7 @@
                 }).join('');
                 targetHtml = `
         <div class="card" style="grid-column: 1 / -1;">
-          <h3>Tiến độ so với mục tiêu tháng 100</h3>
+          <h3>Tiến độ so với mục tiêu tháng 10</h3>
           <table style="width:100%;border-collapse:collapse;margin-top:10px;">
             <thead><tr><th style="text-align:left;min-width:160px">Sản phẩm</th><th style="min-width:60px;text-align:center">Thực tế</th><th style="min-width:60px;text-align:center">Mục tiêu</th><th style="min-width:200px">% Hoàn thành</th></tr></thead>
             <tbody>${tRows}</tbody>
